@@ -1,6 +1,5 @@
-import firebase from "firebase";
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { auth } from "../services/firebase";
+import { auth, firebase } from "../services/firebase";
 
 
 type User = {
@@ -49,6 +48,7 @@ export function AuthContextProvider(props: AuthContextProps) {
   }, [])
 
   async function signInWithGoogle() {
+
     const provider = new firebase.auth.GoogleAuthProvider();
 
     const response = await auth.signInWithPopup(provider);
