@@ -6,10 +6,10 @@ import logoImg from '../assets/images/logo.svg';
 import styles from '../styles/auth.module.scss';
 import { Button } from '../components/Button';
 import { useContext } from 'react';
-import { AuthContext } from '../App';
+import { AuthContext } from '../contexts/AuthContext';
 
 export default function NewRoom() {
-    const {user, signInWithGoogle} = useContext(AuthContext)
+    const {user} = useContext(AuthContext)
 
     return (
         <div className={styles.pageAuth}>
@@ -22,6 +22,7 @@ export default function NewRoom() {
             <main>
                 <div className={styles.mainContent}>
                     <img src={logoImg} alt="Logo LetmeAsk" />
+                    <h1>{user?.name}</h1>
                     <h2>Criar uma nova Sala</h2>
                     <form>
                         <input 
