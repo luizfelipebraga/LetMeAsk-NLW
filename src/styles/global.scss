@@ -12,3 +12,14 @@ body {
 body, input, button, textarea {
     font: 400 1rem 'Inter', sans-serif;
 }
+
+textarea {
+    width: 100%;
+    border: 0;
+    padding: 1rem;
+    border-radius: .5rem;
+    background-color: #fefefe;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    resize: vertical;
+    min-height: 130px;
+}
