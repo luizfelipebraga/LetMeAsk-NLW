@@ -107,6 +107,12 @@
         .questionList {
             margin-top: 2.5rem;
 
+            .boxButtons {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+            }
+
             button {
                 border: 0;
                 background: transparent;
