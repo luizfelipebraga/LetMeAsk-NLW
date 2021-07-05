@@ -9,6 +9,7 @@ import { Button } from '../../components/Button';
 import { useAuth } from '../../hooks/useAuth';
 import { FormEvent, useState } from 'react';
 import { database } from '../../services/firebase';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export default function Home() {
@@ -18,24 +19,35 @@ export default function Home() {
     const [roomCode, setRoomCode] = useState<string>('')
 
     async function handleCreateRoom() {
-        if(!user) {
+        if (!user) {
             await signInWithGoogle()
         }
 
         history.push('/rooms/new')
     }
 
-    async function handleJoinRoom(event:FormEvent) {
+    async function handleJoinRoom(event: FormEvent) {
         event.preventDefault();
 
-        if(roomCode.trim() === '') {
+        if (roomCode.trim() === '') {
             return;
         }
 
         const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
-        if(!roomRef.exists()) {
+        if (!roomRef.exists()) {
             alert('Room does not exists.')
+            return;
+        }
+
+        if (roomRef.val().endedAt) {
+            toast.error('Room already closed!', {
+                style: {
+                    border: '1px solid #713200',
+                    padding: '16px',
+                    boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
+                },
+            })
             return;
         }
 
@@ -44,6 +56,7 @@ export default function Home() {
 
     return (
         <div className={styles.pageAuth}>
+            <Toaster />
             <aside>
                 <img src={illustrationImg} alt="ILustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo</strong>
