@@ -85,23 +85,35 @@ export default function AdminRoom() {
                                     isHighlighted={question.isHighlighted}
                                 >
                                     <div className={styles.boxButtons}>
-                                        <button
-                                            type="button"
-                                            onClick={() => handleCheckQuestionAsAnswered(question.id)}>
-                                            <img src={checkImg} alt="Marcar pergunta respondida" />
-                                        </button>
 
-                                        <button
-                                            type="button"
-                                            onClick={() => handleHighlightQuestion(question.id)}>
-                                            <img src={answerImg} alt="Dar destaque a pergunta" />
-                                        </button>
+                                        {question.isAnswered ? (
+                                            <button
+                                                type="button"
+                                                onClick={() => handleDeleteQuestion(question.id)}>
+                                                <img src={deleteImg} alt="Deletar pegunta" />
+                                            </button>
+                                        ) : (
+                                            <>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleCheckQuestionAsAnswered(question.id)}>
+                                                    <img src={checkImg} alt="Marcar pergunta respondida" />
+                                                </button>
 
-                                        <button
-                                            type="button"
-                                            onClick={() => handleDeleteQuestion(question.id)}>
-                                            <img src={deleteImg} alt="Deletar pegunta" />
-                                        </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleHighlightQuestion(question.id)}>
+                                                    <img src={answerImg} alt="Dar destaque a pergunta" />
+                                                </button>
+
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleDeleteQuestion(question.id)}>
+                                                    <img src={deleteImg} alt="Deletar pegunta" />
+                                                </button>
+                                            </>
+                                        )}
+
                                     </div>
                                 </Question>
                             )
