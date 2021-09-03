@@ -27,7 +27,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 Clone o projeto e acesse a pasta do mesmo.
 
 ```bash
-$ git clone https://github.com/luizfelipebraga/LetMeAsk-NLW
+$ git clone https://github.com/luizfelipebraga/react-letmeask-nlw
 $ cd LetMeAsk-NLW
 ```
 
